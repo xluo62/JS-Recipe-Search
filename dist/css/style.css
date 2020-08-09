@@ -11,4 +11,220 @@
 
 html {
   box-sizing: border-box;  
+  font-size: 62.5%;  
 }
+@media only screen and (max-width: 68.75em) {
+  html {
+    font-size: 50%;
+  }
+}
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #655A56;
+  background-image: linear-gradient(to right bottom, #FBDB89, #F48982);
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* min-height: calc(100vh - 2 * 4vw); */
+}
+.container {
+    max-width: 120rem;
+    margin: 4vw auto;
+    background-color: #fff;
+    border-radius: 6px;
+    /* set overflow is a good habit */
+    overflow: hidden;
+    box-shadow: 0 2rem 6rem 0.5rem rgba(101, 90, 86, 0.2);
+    display: grid;
+    grid-template-rows: 10rem minmax(100rem, auto);
+    grid-template-columns: 1.1fr 2fr 1.1fr;
+    grid-template-areas: "head head head"
+                         "list recipe shopping";
+}
+@media only screen and (max-width: 68.75em) {
+  .container {
+    width: 100%;
+    margin: 0;
+    background-origin: 0;
+  }
+}
+/* button decoration */
+.btn {
+  background-image: linear-gradient(to right bottom, #FBDB89, #F48982);
+  border: none;
+  border-radius: 10rem;
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  transition: all .2s;
+}
+  .btn:hover {
+    transform: scale(1.05);
+  }
+  .btn:focus {
+    outline: none;
+  }
+  .btn > *:first-child {
+    margin-right: 1rem;
+  }
+.btn {
+  font-size: 1.4rem;
+  padding: 1.3rem 3rem;
+  
+}
+  .btn svg {
+    height: 2.25rem;
+    width: 2.25rem;
+    fill: currentColor;
+  }
+
+  .header {
+  grid-area: head;
+  background-color: #F9F5F3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+  .header__logo {
+    margin-left: 4rem;
+    height: 4.5rem;
+    /* display: block; } */}
+
+  .search {
+    background-color: #fff;
+    border-radius: 10rem;
+    display: flex;
+    align-items: center;
+    padding-left: 3rem;
+    transition: all .3s;
+  }
+    .search:focus-within{
+      box-shadow: 0 0.7rem 3rem rgba(101, 90, 86, 0.08);
+      transform: translateY(-2px);
+    }
+    .search__field {
+      border: none;
+      background: none;
+      font-family: inherit;
+      font-size: 1.7rem;
+      color: inherit;
+      width: 30rem;
+    }
+    .search__field:focus {
+      outline: none;
+    }
+    .search__field::placeholder {
+      color: #DAD0CC;
+    }
+  
+  .likes {
+    position: relative;
+    align-self: stretch;
+    /* padding: 0 !important; */
+  }
+    .likes__field {
+      cursor: pointer;
+      height: 100%;
+      padding: 0 4rem;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s;
+      
+    }
+      .likes__field:hover {
+        background-color: #F2EFEE;
+      }
+      .likes__icon {
+        height: 3.75rem;
+        width: 3.75rem;
+        fill: #F59A83;
+      }
+    .likes__panel {
+      /* visibility: hidden; 
+      opacity: 0; */
+        position: absolute;
+        top: 10rem;
+        right: 0; 
+        width: 34rem;
+      z-index: 10;
+      padding: 2rem 0;
+      
+      background-color: #fff;
+      box-shadow: 0 0.8rem 5rem 2rem rgba(101, 90, 86, 0,1);
+     
+      transition: all 0.5s 1s;
+    }
+    /* make it visible when hover on itself or hover on like svg */
+    .likes__panel:hover, .likes__field:hover + .likes__panel {
+      /* visibility: visible;
+      opacity: 1; */
+    }
+    
+   
+      .likes__list {
+        list-style: none;
+      }
+      
+      /* let the <a> element behaves the same before and after visited */
+       .likes__link:link, .likes__link:visited {
+        display: flex;
+        align-items: center;
+         border-right: 1px solid #fff;
+         padding: 1.5rem 3rem;
+         transition: all .3s;
+         text-decoration: none;
+         background-color: greenyellow;
+         border-radius: 10rem;
+       }
+       .likes__link:hover {
+         transform: translateY(-2px);
+         background-color: #F9F5F3;
+       }
+        
+        .likes__fig {
+          flex-basis: 5.5rem;
+          height: 5.5rem;
+          border-radius: 50%;
+          overflow: hidden;
+          margin-right: 2rem;
+          /* position: relative;
+          backface-visibility: hidden;  */
+        }
+          /* .likes__fig::before {
+            content: '';
+            display: block;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: linear-gradient(to right bottom, #FBDB89, #F48982);
+            opacity: .4; } */
+          .likes__fig img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all .3s;
+          }
+        .likes__name {
+          font-size: 1.3rem;
+          color: #F59A83;
+          text-transform: uppercase;
+          font-weight: 600;
+          margin-bottom: .3rem;
+
+        }
+        .likes__author {
+          font-size: 1.1rem;
+          color: #968B87;
+          text-transform: uppercase;
+          font-weight: 600; 
+        }
+
+        .likes__data {
+          
+        }
+      

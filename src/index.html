@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
     <title>forkify // Search over 1,000,000 recipes</title>
 </head>
@@ -14,8 +14,8 @@
             <img src="img/logo.png" alt="Logo" class="header__logo">
             <!-- build a form for search -->
             <form class="search">
-                <input type="text">
-                <button>
+                <input type="text" class="search__field" placeholder="Search over 1,000,000 recipes...">
+                <button class="btn search__btn">
                     <svg class="search__icon">
                         <use href="img/icons.svg#icon-magnifying-glass"></use>
                     </svg>
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </header>
-        <div class="results">
+        <!-- <div class="results">
             <ul class="results__list">
                 <li>
                     <a class="results__link results__link--active" href="#23456">
@@ -268,7 +268,7 @@
                 &copy; by Jonas Schmedtmann. Powered by
                 <a href="http://food2fork.com" target="_blank" class="link">Food2Fork.com</a>.
             </div>
-        </div>
+        </div> -->
     </div>
 </body>
 </html>
