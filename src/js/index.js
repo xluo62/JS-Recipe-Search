@@ -110,9 +110,13 @@ const controlLike = () => {
 
     if (state.like.isLiked(currentID)) {
         //item that is liked
+        state.like.deleteLike(currentID);
+        console.log('dislike' + state.like);
     } else {
         //item that is not liked
-
+       const like = state.like.addLike(currentID, state.recipe.results.publisher,
+                state.recipe.results.title, state.recipe.results.image_url);
+        console.log(like);
     }
 }
 
@@ -129,8 +133,10 @@ elements.recipe.addEventListener('click', e => {
         state.recipe.updateServings('inc');
         recipeView.updateServingsIngredients(state.recipe);
     } else if (e.target.matches('.recipe__btn--add, .recipe__btn--add *')) {
+       
         controlList();
-    } else if (e.target.matches('.recipe__love .recipe__love *')) {
+    } else if (e.target.matches('.recipe__love, .recipe__love *')) {
+        console.log('sssss');
         controlLike();
     }
 });

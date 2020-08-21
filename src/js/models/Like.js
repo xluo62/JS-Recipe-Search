@@ -10,6 +10,7 @@ export default class Like {
             img
         }
         this.likes.push(like);
+        return like;
     }
     deleteLike(id) {
        this.likes.splice(this.likes.findIndex(el => el.id === id),1);
