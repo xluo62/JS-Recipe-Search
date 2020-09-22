@@ -168,6 +168,7 @@ body {
         align-items: center;
         transition: all 0.3s;
         
+        
       }
         .likes__field:hover {
           background-color: #F2EFEE;
@@ -527,7 +528,7 @@ body {
     }
     .recipe__item {
       display: flex;
-     
+      /* width: 400px; */
     }
     .recipe__icon {
       height: 1.8rem;

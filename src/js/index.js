@@ -5,6 +5,7 @@ import {elements, loadSpinner, clearSpinner} from './views/base';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
+import * as likeView from './views/likeView';
 import Like from './models/Like';
 const state = {};
 /** 
@@ -84,7 +85,12 @@ const controlRecipe = async () => {
 }
 const checkRecipe = () => {
     clearSpinner();
-    recipeView.renderRecipe(state.recipe);
+    if (state.like) {
+        recipeView.renderRecipe(state.recipe, state.like.isLiked(window.location.hash.replace('#','')));
+    } else {
+        recipeView.renderRecipe(state.recipe);
+    }
+    
 }
 // List CONROLLER
 
@@ -92,7 +98,7 @@ const controlList = () => {
     // Create a new list IF there in none yet
     if (!state.list) {
         state.list = new List();
-        window.l = state.list;
+        
     }
      // Add each ingredient to the list and UI
     state.recipe.results.ingredients.forEach(el => {
@@ -104,22 +110,38 @@ const controlList = () => {
 const controlLike = () => {
     if (!state.like) {
         state.like = new Like();
-        window.like = state.like;
+        //window.like = state.like;
     }
     const currentID = state.recipe.ID;
 
     if (state.like.isLiked(currentID)) {
         //item that is liked
         state.like.deleteLike(currentID);
-        console.log('dislike' + state.like);
+        //change UI like button
+       likeView.toggleLikeButton(false);
+       // change UI like list
+       likeView.deleteLikeItem(currentID);
+
     } else {
         //item that is not liked
        const like = state.like.addLike(currentID, state.recipe.results.publisher,
                 state.recipe.results.title, state.recipe.results.image_url);
-        console.log(like);
+       //change UI like button
+       likeView.toggleLikeButton(true);
+       // change UI like list
+       likeView.renderLikeItem(like);
     }
-}
+    likeView.toggleLikeMenu(state.like.getNumLikes());
+};
 
+window.addEventListener('load', () => {
+    state.like = new Like();
+    state.like.readStorage();
+    likeView.toggleLikeMenu(state.like.getNumLikes());
+    state.like.likes.forEach(el => {
+        likeView.renderLikeItem(el);
+    });
+});
 // add event listener for many events
 ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
 //
@@ -136,7 +158,6 @@ elements.recipe.addEventListener('click', e => {
        
         controlList();
     } else if (e.target.matches('.recipe__love, .recipe__love *')) {
-        console.log('sssss');
         controlLike();
     }
 });

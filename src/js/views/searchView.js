@@ -9,15 +9,15 @@ elements.searchPaginition.innerHTML = '';}
 let tempID;
 export const highlightItem = id => {
     if (tempID) {
-        document.querySelector(`a[href="#${tempID}"]`).classList.remove('results__link--active');
+        document.querySelector(`.results__link[href="#${tempID}"]`).classList.remove('results__link--active');
     }
     tempID = id; 
-    document.querySelector(`a[href="#${id}"]`).classList.add('results__link--active');
+    document.querySelector(`.results__link[href="#${id}"]`).classList.add('results__link--active');
 }
 
 
 
-const tailorTitle = (title, length = 17) => {
+export const tailorTitle = (title, length = 17) => {
     const refinedTitle = [];
     if (title.length > length) {
         title.split(' ').reduce((acc, cur) => {

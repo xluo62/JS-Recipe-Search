@@ -7,7 +7,9 @@ export const elements = {
     searchPaginition: document.querySelector('.result_pages'),
     recipe: document.querySelector('.recipe'),
     shoppingList: document.querySelector('.shopping__list'),
-    test: document.querySelector('.recipe__ingredients')
+    test: document.querySelector('.recipe__ingredients'),
+    likesMenu: document.querySelector('.likes__field'),
+    likesList: document.querySelector('.likes__list')
 }
 
 const elementsString = {

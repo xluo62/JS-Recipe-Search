@@ -7,9 +7,11 @@ export default class Recipe {
     async getDetails() {
         try {
             const res = await axios(`https://forkify-api.herokuapp.com/api/get?rId=${this.ID}`);
-            console.log('getDetails()');
+           
             this.results = res.data.recipe;
-            console.log(this.results); 
+            // const test = await fetch(`https://forkify-api.herokuapp.com/api/get?rId=${this.ID}`);
+            // const testb = await test.json();
+            // window.testb = testb;
         } catch (err) {
             alert(err);
             console.log(err);
@@ -23,7 +25,6 @@ export default class Recipe {
         this.servings = 4;
     }
     parseIngridients() {
-        console.log('parseIngredients()');
         const unitsLong = ['tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'pounds'];
         const unitsShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound'];
         const units = [...unitsShort, 'g', 'kg'];
@@ -41,8 +42,7 @@ export default class Recipe {
             // parse ingredients into count, unit and ingredient.
             const arrIng = ingredient.split(' ');
             const unitIndx =  arrIng.findIndex(el => units.includes(el));
-            console.log(unitIndx);
-            console.log(ingredient); 
+            
             let objIng;
             if (unitIndx > -1) {
                 if (!parseInt(arrIng[0])) {
